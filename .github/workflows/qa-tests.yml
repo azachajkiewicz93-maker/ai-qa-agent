@@ -34,6 +34,12 @@ jobs:
         run: |
           python -m playwright install --with-deps chromium
 
+      - name: Create report directories
+        run: |
+          mkdir -p reports
+          mkdir -p reports/screenshots
+          mkdir -p test-results
+
       - name: Start test application
         run: |
           python -m http.server 8000 --directory test-app &
@@ -41,4 +47,17 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest -v
+          pytest -v \
+            --junitxml=reports/junit.xml \
+            --tracing=retain-on-failure \
+            --screenshot=only-on-failure \
+            --output=test-results
+
+      - name: Upload test artifacts
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-test-results
+          path: |
+            reports/
+            test-results/
