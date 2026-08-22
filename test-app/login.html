@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Login</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 100px auto;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #message {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Login</h1>
+
+    <form id="login-form">
+
+        <label for="email">
+            Email
+        </label>
+
+        <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Enter email"
+        >
+
+        <label for="password">
+            Password
+        </label>
+
+        <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Enter password"
+        >
+
+        <button type="submit">
+            Login
+        </button>
+
+    </form>
+
+    <div id="message"></div>
+
+    <script>
+
+        const form = document.getElementById(
+            "login-form"
+        );
+
+        const message = document.getElementById(
+            "message"
+        );
+
+        form.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+                const email =
+                    document.getElementById(
+                        "email"
+                    ).value;
+
+                const password =
+                    document.getElementById(
+                        "password"
+                    ).value;
+
+                if (
+                    email === "test@example.com" &&
+                    password === "Password123!"
+                ) {
+
+                    message.textContent =
+                        "Login successful";
+
+                } else {
+
+                    message.textContent =
+                        "Invalid email or password";
+
+                }
+            }
+        );
+
+    </script>
+
+</body>
+</html>

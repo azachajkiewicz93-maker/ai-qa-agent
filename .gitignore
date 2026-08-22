@@ -1,0 +1,22 @@
+# Python virtual environments
+.venv/
+**/.venv/
+ai-qa-agent/
+
+# Environment variables / secrets
+.env
+
+# Python cache
+__pycache__/
+**/__pycache__/
+
+# Pytest cache
+.pytest_cache/
+
+# Generated reports and screenshots
+reports/
+test-results/
+screenshots/
+
+# Backup files
+*.bak
